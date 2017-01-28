@@ -13,9 +13,8 @@
  */
 class ChangeString {
 
-//put your code here
-    public $search = array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z');
-    public $replace = array(' ', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a');
+    //put your code here
+    private $search = array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z');
 
     public function build($string) {
         $charArray = str_split($string);
@@ -23,14 +22,14 @@ class ChangeString {
         $index = 0;
         foreach ($charArray as $c) {
             if ($c !== '') {
-                if(in_array(strtolower($c), $this->search)){   
-                    if(strtolower($c) === 'z'){
+                if (in_array(strtolower($c), $this->search)) {
+                    if (strtolower($c) === 'z') {
                         if (ctype_upper($c)) {
                             $stringReturned[$index] = 'A';
-                        }else{
+                        } else {
                             $stringReturned[$index] = 'a';
                         }
-                    }else{
+                    } else {
                         if (ctype_upper($c)) {
                             $key = array_search(strtolower($c), $this->search);
                             $stringReturned[$index] = strtoupper($this->search[$key + 1]);
@@ -39,11 +38,11 @@ class ChangeString {
                             $stringReturned[$index] = $this->search[$key + 1];
                         }
                     }
-                    
-                }                
+                }
             }
             $index++;
         }
-        return implode('',$stringReturned);
-    }    
+        return implode('', $stringReturned);
+    }
+
 }
